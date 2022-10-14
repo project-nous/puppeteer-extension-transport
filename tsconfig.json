@@ -1,17 +1,14 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
+  "files": ["./src/index.ts"],
   "compilerOptions": {
     "lib": ["DOM"],
-    "rootDir": ".",
-    "outDir": "build",
+    "rootDir": "src",
+    "outDir": "dist",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "target": "ES6"
-  },
-  "include": [
-    "lib/**/*.ts",
-    "examples/**/*.ts",
-    "examples/**/*.json",
-    "test/**/*.ts"
-  ]
+    "target": "ES6",
+    "strict": true,
+    "noUncheckedIndexedAccess": true
+  }
 }

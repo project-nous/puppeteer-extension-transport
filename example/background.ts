@@ -1,5 +1,7 @@
-import puppeteer from 'puppeteer-core/lib/cjs/puppeteer/web';
-import {ExtensionDebuggerTransport} from '../../lib';
+import {Puppeteer} from 'puppeteer-core/lib/esm/puppeteer/common/Puppeteer.js';
+import {ExtensionDebuggerTransport} from '../src';
+
+const puppeteer = new Puppeteer({isPuppeteerCore: true});
 
 const run = async (tabId: number) => {
   const extensionTransport = await ExtensionDebuggerTransport.create(tabId);
@@ -10,6 +12,9 @@ const run = async (tabId: number) => {
 
   // use first page from pages instead of using browser.newPage()
   const [page] = await browser.pages();
+  if (!page) {
+    throw new Error('no page!?');
+  }
 
   await page.goto('https://wikipedia.org');
 

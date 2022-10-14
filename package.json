@@ -1,19 +1,22 @@
 {
   "name": "puppeteer-extension-transport",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Use puppeteer in your browser extension",
   "repository": {
-    "url": "https://github.com/gajananpp/puppeteer-extension-transport"
+    "url": "https://github.com/project-nous/puppeteer-extension-transport"
   },
-  "homepage": "https://github.com/gajananpp/puppeteer-extension-transport/blob/main/README.md",
+  "homepage": "https://github.com/project-nous/puppeteer-extension-transport/blob/main/README.md",
   "author": {
     "name": "Gajanan Patil"
   },
-  "main": "build/lib/index.js",
-  "types": "build/lib/index.d.ts",
-  "files": [
-    "build/lib"
+  "contributors": [
+    {
+      "name": "Jordan Mackie",
+      "email": "jordan@nous.co"
+    }
   ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "keywords": [
     "puppeteer",
@@ -22,28 +25,23 @@
     "extension"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prelint": "npm run fix",
+    "prepare": "npm run compile",
     "lint": "gts lint",
     "clean": "gts clean",
     "precompile": "npm run clean",
     "compile": "tsc",
-    "postcompile": "browserify build/examples/extension-v2/background.js -o build/examples/extension-v2/background.js && browserify build/examples/extension-v3/background.js -o build/examples/extension-v3/background.js",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint",
-    "docs": "typedoc --excludePrivate --excludeInternal --readme none lib/index.ts"
+    "fix": "gts fix"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.166",
-    "@types/node": "^14.11.2",
-    "@types/puppeteer-core": "^5.4.0",
-    "browserify": "^17.0.0",
-    "gts": "^3.1.0",
-    "puppeteer-core": "^12.0.1",
-    "typedoc": "^0.22.10",
-    "typedoc-plugin-markdown": "^3.11.7",
-    "typescript": "^4.0.3"
+    "@types/chrome": "^0.0.197",
+    "@types/node": "^18.8.5",
+    "devtools-protocol": "^0.0.1059094",
+    "esbuild": "^0.15.11",
+    "gts": "^3.1.1",
+    "puppeteer-core": "^19.0.0",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "puppeteer-core": "^19.0.0"
   }
 }
