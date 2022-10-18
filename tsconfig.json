@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "target": "ES6",
+    "declaration": true,
     "strict": true,
     "noUncheckedIndexedAccess": true
   }
