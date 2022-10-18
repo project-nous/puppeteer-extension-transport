@@ -26,6 +26,11 @@ export class ExtensionDebuggerTransport implements ConnectionTransport {
    */
   delay = 0.04 * 1000;
 
+  /**
+   * Set to `true` to log protocol messages.
+   */
+  debug = false;
+
   private target: chrome.debugger.TargetInfo;
   private debugee: chrome.debugger.Debuggee;
   private sessionId?: string;
@@ -96,7 +101,9 @@ export class ExtensionDebuggerTransport implements ConnectionTransport {
   }
 
   send(message: string): void {
-    console.debug('SEND', message);
+    if (this.debug) {
+      console.debug('SEND', message);
+    }
     const parsedMessage = JSON.parse(message);
     const method: CommandMethod = parsedMessage.method;
     if (method === 'Browser.getVersion') {
@@ -240,7 +247,9 @@ export class ExtensionDebuggerTransport implements ConnectionTransport {
 
   private _emit<Event = unknown>(event: Event) {
     const json = JSON.stringify(event);
-    console.debug('RECV', json);
+    if (this.debug) {
+      console.debug('RECV', json);
+    }
     this?.onmessage?.(json);
   }
 }
