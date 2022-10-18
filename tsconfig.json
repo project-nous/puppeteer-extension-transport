@@ -9,6 +9,7 @@
     "resolveJsonModule": true,
     "target": "ES6",
     "declaration": true,
+    "sourceMap": false,
     "strict": true,
     "noUncheckedIndexedAccess": true
   }
